@@ -55,7 +55,14 @@ function createSuggestionElement(question) {
     z-index: 1000;
     display: none;
   `;
-  suggestionElement.textContent = 'Loading suggestion...';
+  suggestionElement.innerHTML = '<p>Loading suggestion...</p>';
+  
+  const applyButton = document.createElement('button');
+  applyButton.textContent = 'Apply Suggestion';
+  applyButton.style.display = 'none';
+  applyButton.addEventListener('click', () => applySuggestion(question.id));
+  suggestionElement.appendChild(applyButton);
+
   question.element.style.position = 'relative';
   question.element.appendChild(suggestionElement);
   suggestionElements[question.id] = suggestionElement;
@@ -73,13 +80,18 @@ async function showSuggestion(questionId) {
   const suggestionElement = suggestionElements[questionId];
   if (suggestionElement) {
     try {
-      const question = extractQuestions()[questionId].text;
-      const suggestion = await getSuggestion(question);
-      suggestionElement.textContent = suggestion;
+      const question = extractQuestions()[questionId];
+      const suggestion = await getSuggestion(question.text);
+      suggestionElement.querySelector('p').textContent = suggestion;
+      suggestionElement.querySelector('button').style.display = 'block';
       suggestionElement.style.display = 'block';
+      
+      // Automatically fill the form field
+      fillFormField(questionId, suggestion);
     } catch (error) {
       console.error('Error showing suggestion:', error);
-      suggestionElement.textContent = 'Error getting suggestion. Please try again.';
+      suggestionElement.querySelector('p').textContent = 'Error getting suggestion. Please try again.';
+      suggestionElement.querySelector('button').style.display = 'none';
       suggestionElement.style.display = 'block';
     }
   }
@@ -104,4 +116,46 @@ async function getSuggestion(question) {
 function removeAllSuggestions() {
   Object.values(suggestionElements).forEach(element => element.remove());
   suggestionElements = {};
+}
+
+function fillFormField(questionId, suggestion) {
+  const question = extractQuestions()[questionId];
+  const element = question.element;
+
+  switch (question.type) {
+    case 'short_answer':
+    case 'long_answer':
+      const input = element.querySelector('input[type="text"], textarea');
+      if (input) {
+        input.value = suggestion;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      break;
+    case 'multiple_choice':
+      const radioButtons = element.querySelectorAll('input[type="radio"]');
+      const labels = element.querySelectorAll('label');
+      for (let i = 0; i < radioButtons.length; i++) {
+        if (labels[i].textContent.trim().toLowerCase() === suggestion.toLowerCase()) {
+          radioButtons[i].click();
+          break;
+        }
+      }
+      break;
+    case 'checkbox':
+      const checkboxes = element.querySelectorAll('input[type="checkbox"]');
+      const checkboxLabels = element.querySelectorAll('label');
+      const suggestedItems = suggestion.toLowerCase().split(',').map(item => item.trim());
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (suggestedItems.includes(checkboxLabels[i].textContent.trim().toLowerCase())) {
+          checkboxes[i].click();
+        }
+      }
+      break;
+  }
+}
+
+function applySuggestion(questionId) {
+  const suggestionElement = suggestionElements[questionId];
+  const suggestion = suggestionElement.querySelector('p').textContent;
+  fillFormField(questionId, suggestion);
 }
