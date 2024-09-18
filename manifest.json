@@ -8,6 +8,7 @@
     "storage"
   ],
   "host_permissions": [
+    "https://docs.google.com/forms/*",
     "https://api.groq.com/*"
   ],
   "background": {

@@ -1,7 +1,10 @@
+console.log('Content script loaded');
+
 let enabled = false;
 let suggestionElements = {};
 
 chrome.runtime.sendMessage({ action: "getState" }, (response) => {
+  console.log('Extension state:', response.enabled);
   enabled = response.enabled;
   if (enabled) {
     initializeExtension();
@@ -10,6 +13,7 @@ chrome.runtime.sendMessage({ action: "getState" }, (response) => {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "toggleEnabled") {
+    console.log('Toggle enabled:', request.enabled);
     enabled = request.enabled;
     if (enabled) {
       initializeExtension();
@@ -20,6 +24,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function initializeExtension() {
+  console.log('Initializing extension');
   const questions = extractQuestions();
   questions.forEach(createSuggestionElement);
   addHoverListeners();
@@ -27,6 +32,7 @@ function initializeExtension() {
 
 function extractQuestions() {
   const questionElements = document.querySelectorAll('.freebirdFormviewerComponentsQuestionBaseRoot');
+  console.log('Found question elements:', questionElements.length);
   return Array.from(questionElements).map((element, index) => {
     const questionText = element.querySelector('.freebirdFormviewerComponentsQuestionBaseHeader').textContent.trim();
     const questionType = getQuestionType(element);
@@ -43,12 +49,13 @@ function getQuestionType(element) {
 }
 
 function createSuggestionElement(question) {
+  console.log('Creating suggestion element for question:', question.id);
   const suggestionElement = document.createElement('div');
   suggestionElement.className = 'groq-suggestion';
   suggestionElement.style.cssText = `
     position: absolute;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 2px solid #ff0000;
     padding: 10px;
     border-radius: 5px;
     max-width: 300px;
@@ -56,6 +63,7 @@ function createSuggestionElement(question) {
     display: none;
     top: 0;
     left: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   `;
   suggestionElement.innerHTML = '<p>Loading suggestion...</p>';
   
@@ -81,12 +89,19 @@ function createSuggestionElement(question) {
 
 function addHoverListeners() {
   document.querySelectorAll('.freebirdFormviewerComponentsQuestionBaseRoot').forEach((element, index) => {
-    element.addEventListener('mouseenter', () => showSuggestion(index));
-    element.addEventListener('mouseleave', () => hideSuggestion(index));
+    element.addEventListener('mouseenter', () => {
+      console.log('Mouse entered question:', index);
+      showSuggestion(index);
+    });
+    element.addEventListener('mouseleave', () => {
+      console.log('Mouse left question:', index);
+      hideSuggestion(index);
+    });
   });
 }
 
 async function showSuggestion(questionId) {
+  console.log('Showing suggestion for question:', questionId);
   if (!enabled) return;
   const suggestionElement = suggestionElements[questionId];
   if (suggestionElement) {
@@ -99,9 +114,6 @@ async function showSuggestion(questionId) {
       const suggestion = await getSuggestion(question.text);
       suggestionElement.querySelector('p').textContent = suggestion;
       suggestionElement.querySelector('button').style.display = 'block';
-      
-      // Do not automatically fill the form field
-      // fillFormField(questionId, suggestion);
     } catch (error) {
       console.error('Error showing suggestion:', error);
       suggestionElement.querySelector('p').textContent = 'Error getting suggestion. Please try again.';
@@ -111,6 +123,7 @@ async function showSuggestion(questionId) {
 }
 
 function hideSuggestion(questionId) {
+  console.log('Hiding suggestion for question:', questionId);
   const suggestionElement = suggestionElements[questionId];
   if (suggestionElement) {
     suggestionElement.style.display = 'none';
@@ -127,11 +140,13 @@ async function getSuggestion(question) {
 }
 
 function removeAllSuggestions() {
+  console.log('Removing all suggestions');
   Object.values(suggestionElements).forEach(element => element.remove());
   suggestionElements = {};
 }
 
 function fillFormField(questionId, suggestion) {
+  console.log('Filling form field for question:', questionId);
   const question = extractQuestions()[questionId];
   const element = question.element;
 
@@ -168,6 +183,7 @@ function fillFormField(questionId, suggestion) {
 }
 
 function applySuggestion(questionId) {
+  console.log('Applying suggestion for question:', questionId);
   const suggestionElement = suggestionElements[questionId];
   const suggestion = suggestionElement.querySelector('p').textContent;
   fillFormField(questionId, suggestion);
