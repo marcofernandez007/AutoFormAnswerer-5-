@@ -1,9 +1,12 @@
 const GROQ_API_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 async function getGroqSuggestion(question) {
   console.log('Fetching suggestion from Groq API for question:', question);
   try {
+    // Retrieve the API key from chrome.storage
+    const result = await new Promise((resolve) => chrome.storage.sync.get('GROQ_API_KEY', resolve));
+    const GROQ_API_KEY = result.GROQ_API_KEY;
+
     if (!GROQ_API_KEY) {
       throw new Error('GROQ_API_KEY is not set');
     }
