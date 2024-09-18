@@ -4,6 +4,11 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 async function getGroqSuggestion(question) {
   console.log('Fetching suggestion from Groq API for question:', question);
   try {
+    if (!GROQ_API_KEY) {
+      throw new Error('GROQ_API_KEY is not set');
+    }
+
+    console.log('Sending request to Groq API...');
     const response = await fetch(GROQ_API_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -21,18 +26,22 @@ async function getGroqSuggestion(question) {
       })
     });
 
+    console.log('Received response from Groq API. Status:', response.status);
+
     if (!response.ok) {
       console.error('Groq API error:', response.status, response.statusText);
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorBody = await response.text();
+      console.error('Error body:', errorBody);
+      throw new Error(`HTTP error! status: ${response.status}, body: ${errorBody}`);
     }
 
     const data = await response.json();
-    console.log('Received suggestion from Groq API');
+    console.log('Successfully parsed response from Groq API');
     return data.choices[0].message.content.trim();
   } catch (error) {
     console.error('Error in getGroqSuggestion:', error);
     if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-      console.error('Possible CORS issue. Check if the API endpoint is correctly configured and accessible.');
+      console.error('Possible CORS issue or network error. Check if the API endpoint is correctly configured and accessible.');
     }
     throw error;
   }

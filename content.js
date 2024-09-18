@@ -116,7 +116,7 @@ async function showSuggestion(questionId) {
       suggestionElement.querySelector('button').style.display = 'block';
     } catch (error) {
       console.error('Error showing suggestion:', error);
-      suggestionElement.querySelector('p').textContent = 'Error getting suggestion. Please try again.';
+      suggestionElement.querySelector('p').textContent = `Error: ${error.message}. Please try again.`;
       suggestionElement.querySelector('button').style.display = 'none';
     }
   }
