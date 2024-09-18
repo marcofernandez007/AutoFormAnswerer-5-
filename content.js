@@ -54,12 +54,23 @@ function createSuggestionElement(question) {
     max-width: 300px;
     z-index: 1000;
     display: none;
+    top: 0;
+    left: 100%;
   `;
   suggestionElement.innerHTML = '<p>Loading suggestion...</p>';
   
   const applyButton = document.createElement('button');
   applyButton.textContent = 'Apply Suggestion';
-  applyButton.style.display = 'none';
+  applyButton.style.cssText = `
+    display: none;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  `;
   applyButton.addEventListener('click', () => applySuggestion(question.id));
   suggestionElement.appendChild(applyButton);
 
@@ -81,18 +92,20 @@ async function showSuggestion(questionId) {
   if (suggestionElement) {
     try {
       const question = extractQuestions()[questionId];
+      suggestionElement.style.display = 'block';
+      suggestionElement.querySelector('p').textContent = 'Loading suggestion...';
+      suggestionElement.querySelector('button').style.display = 'none';
+      
       const suggestion = await getSuggestion(question.text);
       suggestionElement.querySelector('p').textContent = suggestion;
       suggestionElement.querySelector('button').style.display = 'block';
-      suggestionElement.style.display = 'block';
       
-      // Automatically fill the form field
-      fillFormField(questionId, suggestion);
+      // Do not automatically fill the form field
+      // fillFormField(questionId, suggestion);
     } catch (error) {
       console.error('Error showing suggestion:', error);
       suggestionElement.querySelector('p').textContent = 'Error getting suggestion. Please try again.';
       suggestionElement.querySelector('button').style.display = 'none';
-      suggestionElement.style.display = 'block';
     }
   }
 }
