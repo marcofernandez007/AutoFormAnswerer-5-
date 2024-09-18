@@ -27,6 +27,7 @@ function initializeExtension() {
   console.log('initializeExtension called');
   const questions = extractQuestions();
   questions.forEach(createSuggestionElement);
+  addLabelsToFormFields();
   addHoverListeners();
 }
 
@@ -36,10 +37,24 @@ function extractQuestions() {
   const questions = Array.from(questionElements).map((element, index) => {
     const questionText = element.querySelector('.freebirdFormviewerComponentsQuestionBaseHeader').textContent.trim();
     const questionType = getQuestionType(element);
-    return { id: index, element, text: questionText, type: questionType };
+    const questionId = element.id || `groq-question-${index}`;
+    if (!element.id) {
+      element.id = questionId;
+    }
+    return { id: questionId, element, text: questionText, type: questionType };
   });
   console.log('Extracted questions:', questions);
   return questions;
+}
+
+function addLabelsToFormFields() {
+  const questions = extractQuestions();
+  questions.forEach(question => {
+    const labelElement = document.createElement('label');
+    labelElement.setAttribute('for', question.id);
+    labelElement.textContent = question.text;
+    question.element.insertBefore(labelElement, question.element.firstChild);
+  });
 }
 
 function getQuestionType(element) {
@@ -90,14 +105,14 @@ function createSuggestionElement(question) {
 }
 
 function addHoverListeners() {
-  document.querySelectorAll('.freebirdFormviewerComponentsQuestionBaseRoot').forEach((element, index) => {
+  document.querySelectorAll('.freebirdFormviewerComponentsQuestionBaseRoot').forEach((element) => {
     element.addEventListener('mouseenter', () => {
-      console.log('Mouse entered question:', index);
-      showSuggestion(index);
+      console.log('Mouse entered question:', element.id);
+      showSuggestion(element.id);
     });
     element.addEventListener('mouseleave', () => {
-      console.log('Mouse left question:', index);
-      hideSuggestion(index);
+      console.log('Mouse left question:', element.id);
+      hideSuggestion(element.id);
     });
   });
 }
@@ -108,7 +123,7 @@ async function showSuggestion(questionId) {
   const suggestionElement = suggestionElements[questionId];
   if (suggestionElement) {
     try {
-      const question = extractQuestions()[questionId];
+      const question = extractQuestions().find(q => q.id === questionId);
       suggestionElement.style.display = 'block';
       suggestionElement.querySelector('p').textContent = 'Loading suggestion...';
       suggestionElement.querySelector('button').style.display = 'none';
@@ -149,7 +164,7 @@ function removeAllSuggestions() {
 
 function fillFormField(questionId, suggestion) {
   console.log('Filling form field for question:', questionId);
-  const question = extractQuestions()[questionId];
+  const question = extractQuestions().find(q => q.id === questionId);
   const element = question.element;
 
   switch (question.type) {
