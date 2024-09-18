@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const enabled = enableToggle.checked;
     chrome.storage.sync.set({ enabled: enabled });
     updateStatus(enabled);
+    console.log('Extension state changed:', enabled);
 
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { action: "toggleEnabled", enabled: enabled });

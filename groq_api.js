@@ -1,3 +1,5 @@
+console.log('Groq API module loaded');
+
 const GROQ_API_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
 
 async function getGroqSuggestion(question) {
@@ -52,5 +54,3 @@ async function getGroqSuggestion(question) {
 
 // Make the function available globally
 window.getGroqSuggestion = getGroqSuggestion;
-
-console.log('Groq API module loaded');

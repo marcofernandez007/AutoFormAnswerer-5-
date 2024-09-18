@@ -1,4 +1,4 @@
-console.log('Content script loaded');
+console.log('Content script loaded and executed');
 
 let enabled = false;
 let suggestionElements = {};
@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function initializeExtension() {
-  console.log('Initializing extension');
+  console.log('initializeExtension called');
   const questions = extractQuestions();
   questions.forEach(createSuggestionElement);
   addHoverListeners();
@@ -33,11 +33,13 @@ function initializeExtension() {
 function extractQuestions() {
   const questionElements = document.querySelectorAll('.freebirdFormviewerComponentsQuestionBaseRoot');
   console.log('Found question elements:', questionElements.length);
-  return Array.from(questionElements).map((element, index) => {
+  const questions = Array.from(questionElements).map((element, index) => {
     const questionText = element.querySelector('.freebirdFormviewerComponentsQuestionBaseHeader').textContent.trim();
     const questionType = getQuestionType(element);
     return { id: index, element, text: questionText, type: questionType };
   });
+  console.log('Extracted questions:', questions);
+  return questions;
 }
 
 function getQuestionType(element) {
@@ -101,7 +103,7 @@ function addHoverListeners() {
 }
 
 async function showSuggestion(questionId) {
-  console.log('Showing suggestion for question:', questionId);
+  console.log('Showing suggestion for question:', questionId, 'Enabled:', enabled);
   if (!enabled) return;
   const suggestionElement = suggestionElements[questionId];
   if (suggestionElement) {

@@ -1,4 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
+  console.log('Extension installed or updated');
   chrome.storage.sync.set({ enabled: false });
   chrome.storage.sync.set({ GROQ_API_KEY: 'YOUR_ACTUAL_API_KEY_HERE' });
 });
