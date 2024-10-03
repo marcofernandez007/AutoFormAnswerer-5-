@@ -1,0 +1,54 @@
+declare -gx REPLIT_RTLD_LOADER=1
+declare -gx COLORTERM=truecolor
+declare -gx REPLIT_SUBCLUSTER=interactive
+declare -gx SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+declare -gx REPL_SLUG=AutoFormAnswerer
+declare -gx REPLIT_DEV_DOMAIN=6dfc1338-8f41-4d0e-ae9c-7fee9169167e-00-2ra2p8pwinj3f.picard.replit.dev
+declare -gx GIT_EDITOR=replit-git-editor
+declare -gx LANG=en_US.UTF-8
+declare -gx NIX_PROFILES='/nix/var/nix/profiles/default /home/runner/.nix-profile'
+declare -gx REPLIT_BASHRC=/nix/store/sljr8697zka2mxn30fara6d362bqyaid-replit-bashrc/bashrc
+declare -gx REPL_OWNER=Abcdefghijklmnopqrst
+declare -gx XDG_CONFIG_HOME=/home/runner/AutoFormAnswerer/.config
+declare -gx PROMPT_DIRTRIM=2
+declare -gx DENO_TLS_CA_STORE=system
+declare -gx REPL_IDENTITY=v2.public.Q2lRMlpHWmpNVE16T0MwNFpqUXhMVFJrTUdVdFlXVTVZeTAzWm1WbE9URTJPVEUyTjJVU0ZFRmlZMlJsWm1kb2FXcHJiRzF1YjNCeGNuTjBHaEJCZFhSdlJtOXliVUZ1YzNkbGNtVnlJaVEyWkdaak1UTXpPQzA0WmpReExUUmtNR1V0WVdVNVl5MDNabVZsT1RFMk9URTJOMlU0N0svaENsb1ZDZ1p3YVdOaGNtUVNDMmx1ZEdWeVlXTjBhWFpsTj-tyFATC-7tuuOX8Xd6pKitCMP66TaVxN-Y0fIADu24cqF5LQvvuKQJpSfmqL-xz75Wtcs57InMEHxGhALoBA.R0FFaUJtTnZibTFoYmhLbUNIWXlMbkIxWW14cFl5NVJNbVF6VTFoT01VMXVSakJrTVd4U1RtMUZkbUZIZEVKU1ZrNUZVVmRzUTA1SVNreE5NRXB2VWtkS2VtUlZaRkpSVmtwMlVUQmtRbFpYUmt0YU1qbHlWRzB4VTJKV2JEWlNXSEJPWlcxa01GUXdaRnBOUlRGVVRVUkNZVkpGU25OVVJtUkhZa1U1V0ZSWVVrOU5iSEJ6VjJ4U2NtVkZOWEZoTTJoUFlXMVNjMUl5YUZwVk1GcEdVbTFzV2sxc1NuTlhiVEZyWWpKR1dHTklTbWxTZWtZeFdXcE9RMlZIVG5WVWFrSklXakZWTUU0d2MzWmhSVTV2WWpCc1Nsb3hjRE5aVm1SUFlVZE9kRlZYUmtWVk1qbE5XVlpqTVUxR2NGbFRiV2hhVFRGS2QxcEhNVlpoVlRWWVl6TnNUV0pyU1hoWFZ6RTBZMFpzTlU1SWFGWk5SbkF5Vkd0U1YyRkdWWHBWYms1WlRXMWtOVll3YUV0U2JGSllVbTFHV0ZaV2NFaFZWbWhEVjJ4WmVsRnVhR3hoYXpReFZXdFZOV1ZHVGxWVWEwcFlZa1ZXTkZacVJsZGtjeTFxV1hkd1kxVkRVM3A2YmxSeU0waERRMGcxTUhVeVdURlRhMkpTYUV0blEyTkxRV2htVlVZMVVGVmFObUZpYVVkcmJWTm5WMEZ2YkUxRVFqVnNTMDFqVFVKbVNEZFdiemRUYkhKbGFuTlNYMTlTUVdzdVVqQkdSbUZWU25SVWJscHBZbFJHYjFsdGFFMVphMFoxVjFoc1RXSnJTWGhYVnpFMFkwWnNOVTVXU2s1aVZra3lWbFJHYTAxSFZuUlRiRnBVWW01Q1YxWnRNVFJWTVZKeVZXMUdUbFp1UWxkVk1uUlBWa1phV1dGRlZsWmxhMHB5VldwQk1WTldSbkpUYkZwT1VteHdVMVp0Y0U5WlYxSlhZak5vVTJKWGFGTldha3B2WkZaV1dHUkhkR2xpUlRWWVdXdFdUMVp0U2xWaVJWWldZV3RLU0ZwSGVITldiRXAxVW14S1YxWllRa3BXTW5CRFl6RmtjMUpzYUdoVFJuQlRWRlZrVTFFeFdrZGFSV1JTWWxWYVNWZHJWWGhWTURGMFZXdDBWMDFXV2xSVlZFcEtaREZTY21GR1NsZGhNWEIyVmxaYWEySXlTbk5VYmtwcFUwVmFXRmx0ZEhkVU1XeFhWV3hrVGsxWVFraFhhMVl3WVdzeGNsZHNiRmRTYldoWVZrUkdZV1JIVmtsalJtUlhZbFpLU1ZaR1VrdFVNazE1VTJwYVZtRjZiRmhVVjNoTFlqRlplVTFVVWxSTmExcEhWRlpXYTFaSFNrWlhiRnBhVm5wRk1GZFdXbk5PYkVaVlVtMXdhVkpZUWpaV1JFWlhXVmRGZVZOc2JGWldSVnBYV1d0YVlXTnNjRWhsUlZwc1VtNUNSbFl5TVhkaFIwVjRZMGM1VjJGcldsUlZla1pPWlVaYWMxTnNSbGRTUlVvelZqSjBZVmR0VG5SalJURlFWMFUwZWxwRlZscE9WbkJGVWxoU2FXSlVWbEZVTUdSaFZXMUtXR0ZFU2xSU1ZuQjRWbXRXY21SSFVrVmhSWEJwWWxad1VWZEVTWGhXVlRGMFdYcFNhbGRJUWtaVmEyUldUa1phUldKR1VtaE5Wa28yVjIxNGIySlhWbkppZWtKWVZsVXhObGR0YzNkbGJHUldUbGhLVkZaSFVsbFhWMnQzVGxaS2NsVnRPVTloVkVaTVZHcEpOVkpGZUhOVFdHUlRZVEZ3YjFac1ZuZE5SbHBJVGxkR2FGWXdjRlpWYlRBMVYyMUtXRlZxU2xaaGEzQlFWVEZhVDJSV1pIUlNiRTVUWlcxbk1BPT0
+declare -gx NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+declare -gx REPLIT_PID1_VERSION=0.0.0-71bddfd
+declare -gx DISPLAY=:0
+declare -gx REPLIT_PID1_FLAG_REPLIT_RTLD_LOADER=1
+declare -gx HOME=/home/runner
+declare -gx NIX_PATH=nixpkgs=/home/runner/.nix-defexpr/channels/nixpkgs-stable-24_05:/home/runner/.nix-defexpr/channels
+declare -gx LIBGL_DRIVERS_PATH=/nix/store/0lfnrz6nq5myv787cih78knzaqy9z9fc-mesa-23.1.9-drivers/lib/dri
+declare -gx REPLIT_CLI=/nix/store/0v5b1imsnb5jg5vq4garx8s56iw63pl5-pid1-0.0.1/bin/replit
+declare -gx REPLIT_CLUSTER=picard
+declare -gx REPL_LANGUAGE=nix
+declare -gx NIX_PS1='\[\033[01;34m\]\w\[\033[00m\]\$ '
+declare -gx REPLIT_ENVIRONMENT=production
+declare -gx REPL_HOME=/home/runner/AutoFormAnswerer
+declare -gx REPL_OWNER_ID=22566892
+declare -gx DOCKER_CONFIG=/home/runner/AutoFormAnswerer/.config/docker
+declare -gx GIT_ASKPASS=replit-git-askpass
+read -r _new_path <<< "/nix/store/gjniy215m60fq1ix0yh026ss8gfgcq69-npx/bin:/home/runner/AutoFormAnswerer/.config/npm/node_global/bin:/home/runner/AutoFormAnswerer/node_modules/.bin:/nix/store/5kk9h132i0cppcnqfsq06shjdxk1jm5j-nodejs-20.16.0-wrapped/bin:/nix/store/mf8nqb38cj8hyywd18389lb6cf6qrx83-bun-1.1.27/bin:/nix/store/0r10s324j8flxf8p70h3d9d1bzs1hzpm-pnpm-9.9.0/bin:/nix/store/gjym9dkyscad5xjxv1pnq3dv7256ngfc-yarn-1.22.22/bin:/nix/store/zmka8ia4s3ssab264js8yppk02lp6lz4-prettier-3.3.3/bin:/nix/store/s71vlhlz1kmkix09xcdkia291dmvgcv3-pid1/bin:/nix/store/ky4aqzdmv0j0rrbw14hr0xmsrf0amssl-replit-runtime-path/bin:/home/runner/.nix-profile/bin:/home/runner/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+#PATH=/nix/store/gjniy215m60fq1ix0yh026ss8gfgcq69-npx/bin:/home/runner/AutoFormAnswerer/.config/npm/node_global/bin:/home/runner/AutoFormAnswerer/node_modules/.bin:/nix/store/5kk9h132i0cppcnqfsq06shjdxk1jm5j-nodejs-20.16.0-wrapped/bin:/nix/store/mf8nqb38cj8hyywd18389lb6cf6qrx83-bun-1.1.27/bin:/nix/store/0r10s324j8flxf8p70h3d9d1bzs1hzpm-pnpm-9.9.0/bin:/nix/store/gjym9dkyscad5xjxv1pnq3dv7256ngfc-yarn-1.22.22/bin:/nix/store/zmka8ia4s3ssab264js8yppk02lp6lz4-prettier-3.3.3/bin:/nix/store/s71vlhlz1kmkix09xcdkia291dmvgcv3-pid1/bin:/nix/store/ky4aqzdmv0j0rrbw14hr0xmsrf0amssl-replit-runtime-path/bin:/home/runner/.nix-profile/bin:/home/runner/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+if [ -e "/run/replit/env/last" ]; then read -r _last_path < <(\grep '^#PATH=' /run/replit/env/last | cut -f 2 -d =); fi
+_user_components="$(\tr : $'\n' <<< "${PATH:-}" |\grep -xv -f <(\tr : $'\n' <<< "${_last_path}") |\tr $'\n' :)"
+declare -gx PATH="${_user_components}${_new_path}"
+declare -gx HOSTNAME=54af9c5c5c88
+declare -gx LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+declare -gx REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+declare -gx REPL_PUBKEYS='{"crosis-ci":"7YlpcYh82oR9NSTtSYtR5jDL4onNzCGJGq6b+9CuZII=","crosis-ci:1":"7YlpcYh82oR9NSTtSYtR5jDL4onNzCGJGq6b+9CuZII=","crosis-ci:latest":"7YlpcYh82oR9NSTtSYtR5jDL4onNzCGJGq6b+9CuZII=","prod":"tGsjlu/BJvWTgvMaX7acuUb7AO1dXOrRiuk7y083RFE=","prod:1":"tGsjlu/BJvWTgvMaX7acuUb7AO1dXOrRiuk7y083RFE=","prod:2":"8uGN+vfszlnV93/HCSHlVLG0xddMlPkir1Ni4JKT4+w=","prod:3":"9+MCOSHQSQlcodXoot8dC8NLhc862nLkx1/VMsbY2h8=","prod:4":"8uGN+vfszlnV93/HCSHlVLG0xddMlPkir1Ni4JKT4+w=","prod:5":"9+MCOSHQSQlcodXoot8dC8NLhc862nLkx1/VMsbY2h8=","prod:latest":"tGsjlu/BJvWTgvMaX7acuUb7AO1dXOrRiuk7y083RFE=","vault-goval-token":"D5jJoMx1Ml54HM92NLgXl+MzptwDqbSsfyFG6f52g9E=","vault-goval-token:1":"D5jJoMx1Ml54HM92NLgXl+MzptwDqbSsfyFG6f52g9E=","vault-goval-token:latest":"D5jJoMx1Ml54HM92NLgXl+MzptwDqbSsfyFG6f52g9E="}'
+declare -gx REPLIT_PID1_FLAG_NIXMODULES_BEFORE_REPLIT_NIX=1
+declare -gx XDG_CACHE_HOME=/home/runner/AutoFormAnswerer/.cache
+declare -gx REPLIT_RIPPKGS_INDICES=/nix/store/mfrw2kh7ppd5qmjwm5sj9c41lkh2hlij-rippkgs-indices
+declare -gx REPLIT_NIX_CHANNEL=stable-24_05
+declare -gx __EGL_VENDOR_LIBRARY_FILENAMES=/nix/store/0lfnrz6nq5myv787cih78knzaqy9z9fc-mesa-23.1.9-drivers/share/glvnd/egl_vendor.d/50_mesa.json
+declare -gx XDG_DATA_HOME=/home/runner/AutoFormAnswerer/.local/share
+declare -gx NIXPKGS_ALLOW_UNFREE=1
+declare -gx REPLIT_DB_URL=https://kv.replit.com/v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE3MjY3Njk4NDEsImlhdCI6MTcyNjY1ODI0MSwiZGF0YWJhc2VfaWQiOiI2ZGZjMTMzOC04ZjQxLTRkMGUtYWU5Yy03ZmVlOTE2OTE2N2UifQ.8q4rDIpt2nHTMeqSnOZrr0acELMfoqEFf9MuSeel0RWlZU_1gsF3CUhbcs00I9-rPbw719UAwnBRnBHzUV4wMw
+declare -gx REPL_IMAGE=gcr.io/marine-cycle-160323/nix:bf8590a3e2f0a8b70b7ca175eeed9074dffbfca9
+declare -gx REPL_IDENTITY_KEY=k2.secret.lRa6f_7eNdWk6JZj3OHdbRZIuBRa3PX-bAqrLCk75_TVIWjjlpK2X-HZesQxplgUUClhamrPfIM6ojcBlDVZSg
+declare -gx REPL_ID=6dfc1338-8f41-4d0e-ae9c-7fee9169167e
+declare -gx DIRENV_CONFIG=/etc/direnv
+declare -gx npm_config_prefix=/home/runner/AutoFormAnswerer/.config/npm/node_global
+declare -gx USER=runner
